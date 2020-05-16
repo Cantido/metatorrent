@@ -1,18 +1,9 @@
 defmodule Metatorrent do
-  @moduledoc """
-  Documentation for Metatorrent.
-  """
+  alias Metatorrent.MultiFileInfo
+  alias Metatorrent.SingleFileInfo
 
-  @doc """
-  Hello world.
 
-  ## Examples
-
-      iex> Metatorrent.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def decode(bin) do
+    Metatorrent.Metainfo.decode(bin)
   end
 end

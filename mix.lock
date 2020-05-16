@@ -1,0 +1,3 @@
+%{
+  "ex_bencode": {:hex, :ex_bencode, "2.0.1", "e2fc6e62b01fbbd3bc511f5fcff52b3fdf5473689ae8aae3c75b67565070f148", [:mix], [], "hexpm"},
+}
