@@ -12,7 +12,8 @@ For example, here's the [linuxmint-18.3-cinnamon-64bit.iso](https://linuxmint.co
 iex> Metatorrent.decode(File.read! "linuxmint-18.3-cinnamon-64bit.iso.torrent")
 %Metatorrent.Metainfo{
   announce: "https://torrents.linuxmint.com/announce.php",
-  announce_list: nil,
+  announce_list: [],
+  nodes: [],
   comment: nil,
   created_by: "Transmission/2.84 (14307)",
   creation_date: ~U[2017-11-27 09:27:31Z],

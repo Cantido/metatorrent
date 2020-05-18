@@ -61,6 +61,7 @@ defmodule Metatorrent do
         |> rename_keys(key_tokens())
         |> Map.put(:creation_date, creation_date)
         |> Map.update!(:info, &update_info/1)
+        |> Map.update(:announce_list, [], &update_announce_list/1)
         |> Map.update(:nodes, [], &update_nodes/1)
 
       meta = struct(Metatorrent.Metainfo, result)
@@ -93,6 +94,14 @@ defmodule Metatorrent do
     else
       SingleFileInfo.new(info)
     end
+  end
+
+  defp update_announce_list(nil) do
+    []
+  end
+
+  defp update_announce_list(announce_list) do
+    announce_list
   end
 
   defp update_nodes(nodes) when is_list(nodes) do
