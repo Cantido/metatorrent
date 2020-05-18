@@ -5,6 +5,7 @@ defmodule Metatorrent.MultiFileInfo do
   ## Keys
 
   - `:length` - The cumulative size of all files in the torrent.
+     This key is added by Metatorrent, and is the sum of all file lengths.
   - `:name` - The name of the torrent.
   - `:piece_length` - The nominal length of each piece.
   - `:files` - A list of maps describing each downloadable file in this torrent.
