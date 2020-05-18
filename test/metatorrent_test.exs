@@ -1,5 +1,6 @@
 defmodule MetatorrentTest do
   use ExUnit.Case, async: true
+  doctest Metatorrent
 
   test "adds info_hash to decoded file" do
     {:ok, metainfo} = File.read("test/linuxmint-18.3-cinnamon-64bit.iso.torrent")

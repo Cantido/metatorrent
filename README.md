@@ -2,13 +2,14 @@
 
 A BitTorrent metainfo decoder.
 
-Metatorrent also sticks some additional useful information into the map,
+Metatorrent decodes metainfo files (also known as .torrent files),
+and sticks some additional useful information into the map,
 like the info hash, and the total length for multi-file torrents.
 
 For example, here's the [linuxmint-18.3-cinnamon-64bit.iso](https://linuxmint.com/edition.php?id=246) metainfo file, decoded:
 
 ```elixir
-iex> Metatorrent.decode(...)
+iex> Metatorrent.decode(File.read! "linuxmint-18.3-cinnamon-64bit.iso.torrent")
 %Metatorrent.Metainfo{
   announce: "https://torrents.linuxmint.com/announce.php",
   announce_list: nil,
@@ -30,6 +31,18 @@ iex> Metatorrent.decode(...)
     167, 162, 132, 90, 83, 25>>
 }
 ```
+
+### Supported BEPs
+
+This library was built for [Effusion](https://github.com/cantido/effusion)
+and so only supports the BEPs that Effusion supports.
+[Full list of BEPs](http://www.bittorrent.org/beps/bep_0000.html).
+
+| BEP | description |
+| --- | --- |
+| 0003 | The BitTorrent Protocol Specification |
+| 0005 | DHT Protocol |
+| 0012 | Multitracker Metadata Extension |
 
 ## Installation
 

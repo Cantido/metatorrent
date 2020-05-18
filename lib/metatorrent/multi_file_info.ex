@@ -1,29 +1,40 @@
 defmodule Metatorrent.MultiFileInfo do
-  alias Metatorrent.Metainfo
-
   @moduledoc """
   A metadata file's `:info` block describing mutliple downloadable files.
+
+  ## Keys
+
+  - `:length` - The cumulative size of all files in the torrent.
+  - `:name` - The name of the torrent.
+  - `:piece_length` - The nominal length of each piece.
+  - `:files` - A list of maps describing each downloadable file in this torrent.
+    - `:length` - The length of this file
+    - `:path` - A list of directory names, with the final entry being the file's name
+    - `:md5sum` - The MD5 hash of the file (not usually present).
   """
 
   @enforce_keys [:files, :name, :piece_length, :pieces]
   defstruct [:files, :name, :piece_length, :pieces, :length]
 
+  @doc false
   def new(fields) do
     struct(__MODULE__, update_info(fields))
   end
 
+  @doc false
   def decode_md5sum(encoded) when byte_size(encoded) == 32 do
     Base.decode16!(encoded, case: :mixed)
   end
 
+  @doc false
   def bytes_count(info) do
     Enum.count(info.pieces) * info.piece_length
   end
 
   defp update_info(info) when is_map(info) do
     info
-    |> rename_keys(info_tokens())
-    |> Map.update!(:pieces, &Metainfo.update_pieces/1)
+    |> Metatorrent.rename_keys(info_tokens())
+    |> Map.update!(:pieces, &Metatorrent.update_pieces/1)
     |> Map.update!(:files, &update_files/1)
     |> put_total_length()
   end
@@ -44,7 +55,7 @@ defmodule Metatorrent.MultiFileInfo do
 
   defp update_file(file) do
     file
-    |> rename_keys(file_tokens())
+    |> Metatorrent.rename_keys(file_tokens())
     |> Map.update(:md5sum, nil, &decode_md5sum/1)
   end
 
@@ -63,9 +74,5 @@ defmodule Metatorrent.MultiFileInfo do
       "path" => :path,
       "md5sum" => :md5sum
     }
-  end
-
-  def rename_keys(map, names) do
-    for {key, val} <- map, into: %{}, do: {Map.get(names, key, key), val}
   end
 end
