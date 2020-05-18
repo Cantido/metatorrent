@@ -1,5 +1,9 @@
 # Metatorrent
 
+![Travis (.org)](https://img.shields.io/travis/cantido/metatorrent?style=for-the-badge)
+![Hex.pm](https://img.shields.io/hexpm/v/metatorrent?style=for-the-badge)
+![Hex.pm](https://img.shields.io/hexpm/l/metatorrent?style=for-the-badge)
+
 A BitTorrent metainfo decoder.
 
 Metatorrent decodes metainfo files (also known as .torrent files),
