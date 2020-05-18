@@ -9,6 +9,7 @@ defmodule MetatorrentTest do
 
     assert decode_result != nil
     assert Map.get(decode_result, :info_hash) == <<210, 229, 63, 182, 3, 101, 45, 153, 25, 145, 182, 173, 35, 87, 167, 162, 132, 90, 83, 25>>
+    assert decode_result.creation_date == ~U[2017-11-27 09:27:31Z]
   end
 
   test "breaks info.pieces into a list of 20-byte chunks" do

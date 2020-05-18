@@ -15,7 +15,7 @@ iex> Metatorrent.decode(File.read! "linuxmint-18.3-cinnamon-64bit.iso.torrent")
   announce_list: nil,
   comment: nil,
   created_by: "Transmission/2.84 (14307)",
-  creation_date: 1511774851,
+  creation_date: ~U[2017-11-27 09:27:31Z],
   info: %Metatorrent.SingleFileInfo{
     length: 1899528192,
     md5sum: nil,

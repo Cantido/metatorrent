@@ -51,13 +51,15 @@ defmodule Metatorrent do
   def decode(bin) do
     with {:ok, decoded} <- ExBencode.decode(bin),
          {:ok, info} <- ExBencode.encode(decoded["info"]),
-         :ok <- check_info_block(info, bin) do
+         :ok <- check_info_block(info, bin),
+         {:ok, creation_date} <- DateTime.from_unix(decoded["creation date"])  do
       info_hash = :crypto.hash(:sha, info)
 
       result =
         decoded
         |> Map.put(:info_hash, info_hash)
         |> rename_keys(key_tokens())
+        |> Map.put(:creation_date, creation_date)
         |> Map.update!(:info, &update_info/1)
         |> Map.update(:nodes, [], &update_nodes/1)
 
