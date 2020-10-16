@@ -1,8 +1,8 @@
 # Metatorrent
 
-![Travis (.org)](https://img.shields.io/travis/cantido/metatorrent?style=for-the-badge)
-![Hex.pm](https://img.shields.io/hexpm/v/metatorrent?style=for-the-badge)
-![Hex.pm](https://img.shields.io/hexpm/l/metatorrent?style=for-the-badge)
+[![Travis (.com)](https://img.shields.io/travis/cantido/metatorrent)](https://travis-ci.com/github/Cantido/metatorrent)
+[![Hex.pm](https://img.shields.io/hexpm/v/metatorrent)](https://hex.pm/packages/metatorrent)
+![Hex.pm](https://img.shields.io/hexpm/l/metatorrent)
 
 A BitTorrent metainfo decoder.
 
